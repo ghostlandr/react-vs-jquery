@@ -1,73 +1,90 @@
 <!DOCTYPE html>
-<html lang="en"><head>
+<html lang="en" data-bs-theme="dark">
+
+<head>
 	<meta charset="utf-8">
 	<title>Search via jQuery</title>
 
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link href="/css/bootswatch/litera.min.css" rel="stylesheet">
 </head>
+
 <body>
 	<div class="container">
 		<div class="row justify-content-md-center">
-			<form id="search-form">
-				<div class="form-group row">
-					<div class="col col-8">
-						<input class="form-control" name="q" id="search-q" type="text" value="my-cool-droplet" autofocus="">
-					</div>
-					<div class="col col-4">
-						<button type="submit button" class="btn btn-primary">Search The Fleet</button>
-					</div>
-				</form>
-			</div>
-			<div class="row" style="margin-top: 0.75em">
-				<div class="row">Effective query:</div>
-				<div class="row">
-					<pre id="effective-query" class="text-wrap"></pre>
+			<div class="col col-8">
+				<div class="row" style="padding-top: 2em">
+					<form id="search-form">
+						<div class="form-group row">
+							<div class="col col-8">
+								<input class="form-control" name="q" id="search-q" type="text" value="my-cool-droplet" autofocus="">
+							</div>
+							<div class="col col-4">
+								<button type="submit button" class="btn btn-primary">Search The Fleet</button>
+							</div>
+					</form>
 				</div>
-			</div>
-			<div class="d-flex align-items-center">
-				<div class="d-flex justify-content-between w-100">
-					<div>
-						<a class="link-secondary" data-bs-toggle="collapse" href="#query-modifiers" aria-expanded="false" aria-controls="query-modifiers">
-							<span id="modifiers-direction">Show</span> query modifiers
-						</a>
-						<button type="button" class="btn btn-link link-secondary" id="clear-query-modifiers">Clear query modifiers</button>
-					</div>
-					<div class="d-flex align-items-center invisible" id="searches-button">
-						<a class="link-secondary" data-bs-toggle="collapse" href="#searches" aria-expanded="false" aria-controls="searches">
-							<span id="searches-direction">Show</span> <span id="searches-count"></span> previous search<span id="searches-plurality">es</span>
-						</a>
+				<div class="row" style="margin-top: 0.75em">
+					<div class="row">Effective query:</div>
+					<div class="row">
+						<pre id="effective-query" class="text-wrap"></pre>
 					</div>
 				</div>
-			</div>
-			<div class="mb-4 collapse" id="query-modifiers">
-				<div class="row">
-					<div class="ms-4">
-						<input type="checkbox" name="recent-checkins-only" id="recent-checkins-only" />
-						<label for="recent-checkins-only" class="text-muted" style="font-size: .9625rem;">Only showing servers that have reported data in the last day, i.e. <span class="font-monospace">System.Timestamp:[now-1d TO now]</span></label>
-					</div>
-					<div class="ms-4">
-						<input type="checkbox" name="exclude-droplets" id="exclude-droplets" />
-						<label for="exclude-droplets" class="text-muted" style="font-size: .9625rem;">Excluding droplets, i.e. <span class="font-monospace">!System.HardwareModel:Droplet</span></label>
-					</div>
-					<div class="ms-4">
-						<input type="checkbox" name="stage2-only" id="stage2-only" />
-						<label for="stage2-only" class="text-muted" style="font-size: .9625rem;">Stage2 only, i.e. <span class="font-monospace">Rack:*Stage2*</span></label>
-					</div>
-					<div class="ms-4">
-						<input type="checkbox" name="exclude-stage2" id="exclude-stage2" />
-						<label for="exclude-stage2" class="text-muted" style="font-size: .9625rem;">Exclude Stage2, i.e. <span class="font-monospace">!Rack:*Stage2*</span></label>
+				<div class="d-flex align-items-center">
+					<div class="d-flex justify-content-between w-100">
+						<div>
+							<a class="link-secondary" data-bs-toggle="collapse" href="#query-modifiers" aria-expanded="false"
+								aria-controls="query-modifiers">
+								<span id="modifiers-direction">Show</span> query modifiers
+							</a>
+							<button type="button" class="btn btn-link link-secondary" id="clear-query-modifiers">Clear query
+								modifiers</button>
+						</div>
+						<div class="d-flex align-items-center invisible" id="searches-button">
+							<a class="link-secondary" data-bs-toggle="collapse" href="#searches" aria-expanded="false"
+								aria-controls="searches">
+								<span id="searches-direction">Show</span> <span id="searches-count"></span> previous search<span
+									id="searches-plurality">es</span>
+							</a>
+						</div>
 					</div>
 				</div>
-			</div>
-			<div class="collapse" id="searches">
-				<div class="row" id="search-content"></div>
-				<div class="row my-2">
-					<div class="col-12 text-muted text-center">
-						<span style="font-size: .9625rem;">This history includes most recent or saved searches. Use the Actions icons to save/name searches and preserve up to 10 in this list.</span>
+				<div class="mb-4 collapse" id="query-modifiers">
+					<div class="row">
+						<div class="ms-4">
+							<input type="checkbox" name="recent-checkins-only" id="recent-checkins-only" />
+							<label for="recent-checkins-only" class="text-muted" style="font-size: .9625rem;">Only showing servers
+								that have reported data in the last day, i.e. <span class="font-monospace">System.Timestamp:[now-1d TO
+									now]</span></label>
+						</div>
+						<div class="ms-4">
+							<input type="checkbox" name="exclude-droplets" id="exclude-droplets" />
+							<label for="exclude-droplets" class="text-muted" style="font-size: .9625rem;">Excluding droplets, i.e.
+								<span class="font-monospace">!System.HardwareModel:Droplet</span></label>
+						</div>
+						<div class="ms-4">
+							<input type="checkbox" name="stage2-only" id="stage2-only" />
+							<label for="stage2-only" class="text-muted" style="font-size: .9625rem;">Stage2 only, i.e. <span
+									class="font-monospace">Rack:*Stage2*</span></label>
+						</div>
+						<div class="ms-4">
+							<input type="checkbox" name="exclude-stage2" id="exclude-stage2" />
+							<label for="exclude-stage2" class="text-muted" style="font-size: .9625rem;">Exclude Stage2, i.e. <span
+									class="font-monospace">!Rack:*Stage2*</span></label>
+						</div>
 					</div>
-					<div class="col-4 offset-md-4 text-center">
-						<button type="button" class="btn btn-link link-secondary" id="clear-searches">Delete all previous searches</button>
+				</div>
+				<div class="collapse" id="searches">
+					<div class="row" id="search-content"></div>
+					<div class="row my-2">
+						<div class="col-12 text-muted text-center">
+							<span style="font-size: .9625rem;">This history includes most recent or saved searches. Use the Actions
+								icons to save/name searches and preserve up to 10 in this list.</span>
+						</div>
+						<div class="col-4 offset-md-4 text-center">
+							<button type="button" class="btn btn-link link-secondary" id="clear-searches">Delete all previous
+								searches</button>
+						</div>
 					</div>
 				</div>
 			</div>
@@ -77,37 +94,37 @@
 	<script src="/js/vendor/jquery-ui.min.js"></script>
 	<script src="/js/vendor/bootstrap.bundle.min.js"></script>
 	<script src="/js/savedSearch.js"></script>
-<script>
-function updateEffectiveQuery() {
-	var query = '';
-	if ($('#exclude-droplets').prop('checked')) {
-		query += '!System.HardwareModel:Droplet ';
-	}
-	if ($('#recent-checkins-only').prop('checked')) {
-		query += 'System.Timestamp:[now-1d TO now] ';
-	}
-	if ($('#exclude-stage2').prop('checked')) {
-		query += '!Rack:*Stage2* ';
-	}
-	if ($('#stage2-only').prop('checked')) {
-		query += 'Rack:*Stage2* ';
-	}
-	query += $('#search-q').val();
+	<script>
+		function updateEffectiveQuery() {
+			var query = '';
+			if ($('#exclude-droplets').prop('checked')) {
+				query += '!System.HardwareModel:Droplet ';
+			}
+			if ($('#recent-checkins-only').prop('checked')) {
+				query += 'System.Timestamp:[now-1d TO now] ';
+			}
+			if ($('#exclude-stage2').prop('checked')) {
+				query += '!Rack:*Stage2* ';
+			}
+			if ($('#stage2-only').prop('checked')) {
+				query += 'Rack:*Stage2* ';
+			}
+			query += $('#search-q').val();
 
-	$('#effective-query').text(query);
-}
+			$('#effective-query').text(query);
+		}
 
-function clearQueryModifiers() {
-	$('#recent-checkins-only').prop('checked', false);
-	$('#exclude-droplets').prop('checked', false);
-	// Bug found!
-}
+		function clearQueryModifiers() {
+			$('#recent-checkins-only').prop('checked', false);
+			$('#exclude-droplets').prop('checked', false);
+			// Bug found!
+		}
 
-function displayPreviousSearches(searches) {
-	let htmlOut = '<div class="ms-4 row"><div class="col-2">Actions</div><div class="col-3">Name</div><div class="col-7">Query</div></div>';
-	searches.forEach(search => {
-		// FIXME: this allows stored xss attacks so need to fix that at some point
-		htmlOut += `<div class="ms-4 mt-2 row">
+		function displayPreviousSearches(searches) {
+			let htmlOut = '<div class="ms-4 row"><div class="col-2">Actions</div><div class="col-3">Name</div><div class="col-7">Query</div></div>';
+			searches.forEach(search => {
+				// FIXME: this allows stored xss attacks so need to fix that at some point
+				htmlOut += `<div class="ms-4 mt-2 row">
 			<div class="col-2" style="font-size: .9625rem;">
 				<a class="pe-auto" style="cursor: pointer;" onclick="editSearchName(${search.id})">✏</a>
 				<a class="ms-1" style="cursor: pointer;" onclick="deleteSearch(${search.id})">🚮</a>
@@ -119,78 +136,78 @@ function displayPreviousSearches(searches) {
 				<a class="text-muted" href="/search?q=${search.query}">${search.query}</a>
 			</div>
 		</div>`;
-	})
-	$('#search-content').html(htmlOut);
-}
+			})
+			$('#search-content').html(htmlOut);
+		}
 
-function editSearchName(searchId) {
-	const name = prompt('What would you like to name this search?');
-	if (!name) {
-		return;
-	}
-	const searches = savedSearches();
-	searches.editName(searchId, name);
-	updateSearchesUI(searches.getAll());
-}
+		function editSearchName(searchId) {
+			const name = prompt('What would you like to name this search?');
+			if (!name) {
+				return;
+			}
+			const searches = savedSearches();
+			searches.editName(searchId, name);
+			updateSearchesUI(searches.getAll());
+		}
 
-function deleteSearch(searchId) {
-	if (!confirm('Are you sure you want to delete this search?')) return;
-	const searches = savedSearches();
-	searches.remove(searchId);
-	updateSearchesUI(searches.getAll());
-}
+		function deleteSearch(searchId) {
+			if (!confirm('Are you sure you want to delete this search?')) return;
+			const searches = savedSearches();
+			searches.remove(searchId);
+			updateSearchesUI(searches.getAll());
+		}
 
-function updateSearchesUI(searchList) {
-	displayPreviousSearches(searchList);
-	$('#searches-count').text(searchList.length);
-	$('#searches-plurality').text(searchList.length === 1 ? '' : 'es');
-	if (searchList.length > 0) {
-		$('#searches-button').removeClass('invisible');
-	}
-}
+		function updateSearchesUI(searchList) {
+			displayPreviousSearches(searchList);
+			$('#searches-count').text(searchList.length);
+			$('#searches-plurality').text(searchList.length === 1 ? '' : 'es');
+			if (searchList.length > 0) {
+				$('#searches-button').removeClass('invisible');
+			}
+		}
 
-$(function () {
-	var $modifiersDirection = $('#modifiers-direction');
-	var $searchesDirection = $('#searches-direction');
-	$('#query-modifiers.collapse').on('hide.bs.collapse', function () {
-		$modifiersDirection.text('Show');
-	});
-	$('#query-modifiers.collapse').on('show.bs.collapse', function () {
-		$modifiersDirection.text('Hide');
-	});
-	$('#searches.collapse').on('hide.bs.collapse', function () {
-		$searchesDirection.text('Show');
-	});
-	$('#searches.collapse').on('show.bs.collapse', function () {
-		$searchesDirection.text('Hide');
-	});
-	updateEffectiveQuery();
+		$(function () {
+			var $modifiersDirection = $('#modifiers-direction');
+			var $searchesDirection = $('#searches-direction');
+			$('#query-modifiers.collapse').on('hide.bs.collapse', function () {
+				$modifiersDirection.text('Show');
+			});
+			$('#query-modifiers.collapse').on('show.bs.collapse', function () {
+				$modifiersDirection.text('Hide');
+			});
+			$('#searches.collapse').on('hide.bs.collapse', function () {
+				$searchesDirection.text('Show');
+			});
+			$('#searches.collapse').on('show.bs.collapse', function () {
+				$searchesDirection.text('Hide');
+			});
+			updateEffectiveQuery();
 
-	$('#search-q').on('keyup', updateEffectiveQuery);
-	// This string matches all the inputs in an element with an id of "query-modifiers"
-	// Any new inputs we add (i.e. new query mods) should be affected here, which is nice!
-	$('#query-modifiers input').on('change', updateEffectiveQuery);
+			$('#search-q').on('keyup', updateEffectiveQuery);
+			// This string matches all the inputs in an element with an id of "query-modifiers"
+			// Any new inputs we add (i.e. new query mods) should be affected here, which is nice!
+			$('#query-modifiers input').on('change', updateEffectiveQuery);
 
-	$('#clear-query-modifiers').on('click', function() {
-		clearQueryModifiers();
-		updateEffectiveQuery();
-	});
+			$('#clear-query-modifiers').on('click', function () {
+				clearQueryModifiers();
+				updateEffectiveQuery();
+			});
 
-	const searches = savedSearches();
-	const searchList = searches.getAll();
-	updateSearchesUI(searchList);
+			const searches = savedSearches();
+			const searchList = searches.getAll();
+			updateSearchesUI(searchList);
 
-	$('#search-form').on('submit', function() {
-		searches.save($('#effective-query').text());
-		return true;
-	});
-	$('#clear-searches').on('click', function() {
-		if (!confirm('Are you sure you want to delete all previous searches - including named ones?')) return;
-		searches.clearAll();
-		updateSearchesUI([]);
-	});
-});
-</script>
+			$('#search-form').on('submit', function () {
+				searches.save($('#effective-query').text());
+				return true;
+			});
+			$('#clear-searches').on('click', function () {
+				if (!confirm('Are you sure you want to delete all previous searches - including named ones?')) return;
+				searches.clearAll();
+				updateSearchesUI([]);
+			});
+		});
+	</script>
 </body>
+
 </html>
- 
