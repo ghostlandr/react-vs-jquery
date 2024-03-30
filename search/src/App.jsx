@@ -113,7 +113,7 @@ function App() {
           <SavedSearches
             searches={searches}
             setSearches={setSearches}
-            visible={showSearches}
+            visible={showSearches && searches.length > 0}
           />
         </div>
       </div>
