@@ -81,6 +81,7 @@ function App() {
                   onClick={() => setShowQueryMods(!showQueryMods)}
                   aria-expanded={showQueryMods}
                   aria-controls="query-modifiers"
+                  variant="link"
                 >
                   {showQueryMods ? "Hide" : "Show"} query modifiers
                 </Button>
@@ -97,6 +98,7 @@ function App() {
                     onClick={() => setShowSearches(!showSearches)}
                     aria-expanded="false"
                     aria-controls="searches"
+                    variant="link"
                   >
                     {showSearches ? "Hide" : "Show"} {searches.length} previous
                     search{searches.length === 1 ? "" : "es"}
@@ -113,7 +115,7 @@ function App() {
           <SavedSearches
             searches={searches}
             setSearches={setSearches}
-            visible={showSearches && searches.length > 0}
+            visible={showSearches}
           />
         </div>
       </div>

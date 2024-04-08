@@ -44,7 +44,7 @@ export function SavedSearches({ visible, searches, setSearches }) {
 
   return (
     <Collapse in={visible}>
-      <>
+      <div>
         <div className="ms-4 row">
           <div className="col-2">Actions</div>
           <div className="col-3">Name</div>
@@ -78,7 +78,7 @@ export function SavedSearches({ visible, searches, setSearches }) {
             </div>
           </div>
         </div>
-      </>
+      </div>
     </Collapse>
   );
 }
