@@ -20,7 +20,7 @@
 								<input class="form-control" name="q" id="search-q" type="text" value="my-cool-droplet" autofocus="" />
 							</div>
 							<div class="col col-4">
-								<button type="submit button" class="btn btn-primary">Search The Fleet</button>
+								<button type="submit" class="btn btn-primary">Search The Fleet</button>
 							</div>
 					</form>
 				</div>
@@ -117,7 +117,6 @@
 		function clearQueryModifiers() {
 			$('#recent-checkins-only').prop('checked', false);
 			$('#exclude-droplets').prop('checked', false);
-			// Bug found!
 		}
 
 		function displayPreviousSearches(searches) {

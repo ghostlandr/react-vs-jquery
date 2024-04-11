@@ -80,12 +80,14 @@ function SearchBar() {
               aria-expanded={showQueryMods}
               aria-controls="query-modifiers"
               variant="link"
+              className="link-secondary"
             >
               {showQueryMods ? "Hide" : "Show"} query modifiers
             </Button>
             <Button
               variant="link"
               onClick={() => setQueryMods(EMPTY_QUERY_MODS)}
+              className="link-secondary"
             >
               Clear query modifiers
             </Button>
@@ -97,6 +99,7 @@ function SearchBar() {
                 aria-expanded="false"
                 aria-controls="searches"
                 variant="link"
+                className="link-secondary"
               >
                 {showSearches ? "Hide" : "Show"} {searches.length} previous
                 search{searches.length === 1 ? "" : "es"}
