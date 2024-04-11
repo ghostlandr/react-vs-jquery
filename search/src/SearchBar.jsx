@@ -41,84 +41,80 @@ function SearchBar() {
   };
 
   return (
-    <div className="container">
-      <div className="row justify-content-md-center">
-        <div className="col col-8">
-          <div className="row" style={{ paddingTop: "2em" }}>
-            <form id="search-form">
-              <div className="form-group row">
-                <div className="col col-8">
-                  <input
-                    className="form-control"
-                    name="q"
-                    id="search-q"
-                    type="text"
-                    value={search}
-                    onChange={(el) => setSearch(el.target.value)}
-                    autoFocus=""
-                  />
-                </div>
-                <div className="col col-4">
-                  <Button onClick={handleSubmit} variant="primary">
-                    Search The Fleet
-                  </Button>
-                </div>
-              </div>
-            </form>
-          </div>
-          <div className="row" style={{ marginTop: "0.75em" }}>
-            <div className="row">Effective query:</div>
-            <div className="row">
-              <pre id="effective-query" className="text-wrap">
-                {effectiveQuery}
-              </pre>
+    <div className="col col-8">
+      <div className="row" style={{ paddingTop: "2em" }}>
+        <form id="search-form">
+          <div className="form-group row">
+            <div className="col col-8">
+              <input
+                className="form-control"
+                name="q"
+                id="search-q"
+                type="text"
+                value={search}
+                onChange={(el) => setSearch(el.target.value)}
+                autoFocus=""
+              />
+            </div>
+            <div className="col col-4">
+              <Button onClick={handleSubmit} variant="primary">
+                Search The Fleet
+              </Button>
             </div>
           </div>
-          <div className="d-flex align-items-center">
-            <div className="d-flex justify-content-between w-100">
-              <div>
-                <Button
-                  onClick={() => setShowQueryMods(!showQueryMods)}
-                  aria-expanded={showQueryMods}
-                  aria-controls="query-modifiers"
-                  variant="link"
-                >
-                  {showQueryMods ? "Hide" : "Show"} query modifiers
-                </Button>
-                <Button
-                  variant="link"
-                  onClick={() => setQueryMods(EMPTY_QUERY_MODS)}
-                >
-                  Clear query modifiers
-                </Button>
-              </div>
-              {searches.length > 0 && (
-                <div className="d-flex align-items-center" id="searches-button">
-                  <Button
-                    onClick={() => setShowSearches(!showSearches)}
-                    aria-expanded="false"
-                    aria-controls="searches"
-                    variant="link"
-                  >
-                    {showSearches ? "Hide" : "Show"} {searches.length} previous
-                    search{searches.length === 1 ? "" : "es"}
-                  </Button>
-                </div>
-              )}
-            </div>
-          </div>
-          <QueryModifiers
-            mods={queryMods}
-            setMods={setQueryMods}
-            visible={showQueryMods}
-          />
-          <SavedSearches
-            searches={searches}
-            setSearches={setSearches}
-            visible={showSearches}
-          />
+        </form>
+      </div>
+      <div className="row" style={{ marginTop: "0.75em" }}>
+        <div className="row">Effective query:</div>
+        <div className="row">
+          <pre id="effective-query" className="text-wrap">
+            {effectiveQuery}
+          </pre>
         </div>
       </div>
+      <div className="d-flex align-items-center">
+        <div className="d-flex justify-content-between w-100">
+          <div>
+            <Button
+              onClick={() => setShowQueryMods(!showQueryMods)}
+              aria-expanded={showQueryMods}
+              aria-controls="query-modifiers"
+              variant="link"
+            >
+              {showQueryMods ? "Hide" : "Show"} query modifiers
+            </Button>
+            <Button
+              variant="link"
+              onClick={() => setQueryMods(EMPTY_QUERY_MODS)}
+            >
+              Clear query modifiers
+            </Button>
+          </div>
+          {searches.length > 0 && (
+            <div className="d-flex align-items-center" id="searches-button">
+              <Button
+                onClick={() => setShowSearches(!showSearches)}
+                aria-expanded="false"
+                aria-controls="searches"
+                variant="link"
+              >
+                {showSearches ? "Hide" : "Show"} {searches.length} previous
+                search{searches.length === 1 ? "" : "es"}
+              </Button>
+            </div>
+          )}
+        </div>
+      </div>
+      <QueryModifiers
+        mods={queryMods}
+        setMods={setQueryMods}
+        visible={showQueryMods}
+      />
+      <SavedSearches
+        searches={searches}
+        setSearches={setSearches}
+        visible={showSearches}
+      />
     </div>
   );
 }
