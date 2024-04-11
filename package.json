@@ -4,7 +4,8 @@
   "description": "A tech demo comparing the same feature but implemented in jQuery or React",
   "main": "index.js",
   "scripts": {
-    "start-jq": "http-server jquery"
+    "start-jq": "http-server jquery",
+    "start-react": "cd search && npm run dev"
   },
   "author": "Graham Holtslander <menello@gmail.com>",
   "license": "ISC",

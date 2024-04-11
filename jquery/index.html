@@ -17,7 +17,7 @@
 					<form id="search-form">
 						<div class="form-group row">
 							<div class="col col-8">
-								<input class="form-control" name="q" id="search-q" type="text" value="my-cool-droplet" autofocus="" />
+								<input class="form-control" name="q" id="search-q" type="text" value="" autofocus="" />
 							</div>
 							<div class="col col-4">
 								<button type="submit" class="btn btn-primary">Search The Fleet</button>
@@ -52,13 +52,13 @@
 				<div class="mb-4 collapse" id="query-modifiers">
 					<div class="row">
 						<div class="ms-4">
-							<input type="checkbox" name="recent-checkins-only" id="recent-checkins-only" />
+							<input type="checkbox" name="recent-checkins-only" id="recent-checkins-only" checked />
 							<label for="recent-checkins-only" class="text-muted" style="font-size: .9625rem;">Only showing servers
 								that have reported data in the last day, i.e. <span class="font-monospace">System.Timestamp:[now-1d TO
 									now]</span></label>
 						</div>
 						<div class="ms-4">
-							<input type="checkbox" name="exclude-droplets" id="exclude-droplets" />
+							<input type="checkbox" name="exclude-droplets" id="exclude-droplets" checked />
 							<label for="exclude-droplets" class="text-muted" style="font-size: .9625rem;">Excluding droplets, i.e.
 								<span class="font-monospace">!System.HardwareModel:Droplet</span></label>
 						</div>
@@ -122,7 +122,6 @@
 		function displayPreviousSearches(searches) {
 			let htmlOut = '<div class="ms-4 row"><div class="col-2">Actions</div><div class="col-3">Name</div><div class="col-7">Query</div></div>';
 			searches.forEach(search => {
-				// FIXME: this allows stored xss attacks so need to fix that at some point
 				htmlOut += `<div class="ms-4 mt-2 row">
 			<div class="col-2" style="font-size: .9625rem;">
 				<a class="pe-auto" style="cursor: pointer;" onclick="editSearchName(${search.id})">✏</a>
